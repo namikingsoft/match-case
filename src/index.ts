@@ -48,7 +48,7 @@ class API<S,D> {
     return this.matcher.get()
   }
 
-  add(param: {
+  caseOf(param: {
     when: ImplicitWhen<S>,
     then: ImplicitThen<S,D>,
   }): API<S,D> {
@@ -59,7 +59,7 @@ class API<S,D> {
     )
   }
 
-  addNone(param: {
+  caseOfNone(param: {
     then: ImplicitThen<S,D>,
   }): API<S,D> {
     return new API<S,D>(
@@ -69,7 +69,7 @@ class API<S,D> {
     )
   }
 
-  addElse(param: {
+  caseOfElse(param: {
     then: ImplicitThen<S,D>,
   }): API<S,D> {
     return new API<S,D>(

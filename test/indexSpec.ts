@@ -24,11 +24,11 @@ describe("match-case", function() {
   context("case 2", () => {
     it("should be return case result", () => {
       match<number,number>(10)
-      .add({
+      .caseOf({
         when: n => n > 0,
         then: v => v * v,
       })
-      .addElse({
+      .caseOfElse({
         then: v => v + v,
       })
       .get()
@@ -36,11 +36,11 @@ describe("match-case", function() {
     })
     it("should be return else result", () => {
       match<number,number>(-5)
-      .add({
+      .caseOf({
         when: n => n > 0,
         then: v => v * v
       })
-      .addElse({
+      .caseOfElse({
         then: v => v + v,
       })
       .get()
@@ -56,23 +56,23 @@ describe("match-case", function() {
       )
       .map<number>(
         v => match<any, number>(v).noneThen(0)
-        .add({
+        .caseOf({
           when: n => typeof(n) === "number",
           then: v => v
         })
-        .add({
+        .caseOf({
           when: n => typeof(n) === "string" && /^[0-9]+$/.test(n),
           then: v => parseInt(v)
         })
-        .add({
+        .caseOf({
           when: n => typeof(n) === "function",
           then: v => v()
         })
-        .add({
+        .caseOf({
           when: n => n instanceof Date,
           then: 5
         })
-        .add({
+        .caseOf({
           when: n => n.num > 0,
           then: v => v.num
         })
