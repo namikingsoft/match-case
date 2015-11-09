@@ -1,3 +1,4 @@
+import assert from 'power-assert'
 import When from 'domains/When'
 
 describe("When", function() {

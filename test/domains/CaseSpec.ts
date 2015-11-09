@@ -1,3 +1,4 @@
+import assert from 'power-assert'
 import Case from 'domains/Case'
 import When from 'domains/When'
 import Then from 'domains/Then'

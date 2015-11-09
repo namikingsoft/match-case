@@ -1,3 +1,4 @@
+import assert from 'power-assert'
 import Then from 'domains/Then'
 
 describe("Then", function() {

@@ -1,3 +1,4 @@
+import assert from 'power-assert'
 import WhenFactory from 'domains/WhenFactory'
 import WhenElse from 'domains/WhenElse'
 import WhenNone from 'domains/WhenNone'

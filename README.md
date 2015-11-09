@@ -1,6 +1,6 @@
 Match-case
 ==============================
-Functional javascript pattern matcher.
+Functional pattern matcher for JavaScript.
 
 
 Install
@@ -13,11 +13,12 @@ npm install match-case
 
 Basic Usage
 ------------------------------
+In case of ECMAScript6
 
 ```javascript
-var match = require('match-case')
+import match from 'match-case'
 
-match(10)
+var result1 = match(10)
   .caseOf({
     when: n => n > 0,
     then: v => v * v
@@ -26,38 +27,54 @@ match(10)
     then: v => 404
   })
 .end()
-//  =>
-.should.be.equals(100)
+// =>
+assert(result1 === 100)
 
-match(-1)
+var result2 = match(-1)
   .caseOf(n => n > 0, v => v * v)
   .caseOfElse(404)
 .end()
 // =>
-.should.be.equals(404)
+assert(result2 === 404)
 
 const matcher = match()
   .caseOf(n => n > 0, 200)
   .caseOfNone(404)
   .caseOfElse(500)
 // =>
-matcher.get(10).should.be.equals(200)
-matcher.get(-1).should.be.equals(404)
-matcher.get(null).should.be.equals(500)
-matcher.get(undefined).should.be.equals(500)
+assert(matcher.get(10) === 200)
+assert(matcher.get(-1) === 404)
+assert(matcher.get(null) === 500)
+assert(matcher.get(undefined) === 500)
+```
+
+In case of ECMAScript5
+
+```javascript
+var match = require('match-case').default
+
+var result = match(10)
+  .caseOf({
+    when: function(n) {return n > 0},
+    then: function(v) {return v * v})
+  })
+  .caseOfElse(404)
+.end()
+// =>
+assert(result === 100)
 ```
 
 
 Practical Usage
 ------------------------------
-Fizz-Buzz example powered by TypeScript(ES6)
+Fizz-Buzz example in case of TypeScript(ES6)
 
 ```javascript
 ///<reference path='./node_modules/match-case/lib/index.d.ts'/>
 import match from 'match-case'
 import {List} from 'immutable'
 
-List.of<any>(
+const result = List.of<any>(
   0, 1, "2", 3, ()=>4, {num:5}, new Date(), 7, undefined, 8,
   "9", 10, "Hello", 11, "12", null, 13, 14, "World", 15, 16
 )
@@ -109,31 +126,39 @@ List.of<any>(
 .join(" ")
 
 // =>
-.should.be.equal("1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz")
+assert(
+  result === "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz"
+)
 ```
 
 
 More Usage
 ------------------------------
-Please see [spec files](./test).
+Please see [spec files](./test/api).
 
 
 Development
 ------------------------------
 
-### Build
+#### Install
+
+```
+npm install
+```
+
+#### Build
 
 ```
 npm run build
 ```
 
-### Test
+#### Test
 
 ```
 npm test
 ```
 
-### Test watch
+#### Test watch
 
 ```
 npm run test:watch

@@ -1,3 +1,4 @@
+import assert from 'power-assert'
 import CaseFactory from 'domains/CaseFactory'
 import Case from 'domains/Case'
 
