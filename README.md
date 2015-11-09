@@ -53,6 +53,7 @@ Practical Usage
 Fizz-Buzz example powered by TypeScript(ES6)
 
 ```javascript
+///<reference path='./node_modules/match-case/lib/index.d.ts'/>
 import match from 'match-case'
 import {List} from 'immutable'
 
@@ -132,7 +133,7 @@ npm run build
 npm test
 ```
 
-### Test Watch
+### Test watch
 
 ```
 npm run test:watch
