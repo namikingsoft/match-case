@@ -18,10 +18,6 @@ export default class Matcher<S,D> {
 
   match(value: S): D {
     const match = this.cases.find(c => c.when.test(value))
-    if (match) {
-      return match.then.exec(value)
-    } else {
-      return undefined
-    }
+    return match ? match.then.exec(value) : undefined
   }
 }
