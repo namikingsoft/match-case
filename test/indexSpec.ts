@@ -3,59 +3,82 @@ import {List} from 'immutable'
 
 describe("match-case", function() {
 
-  context("case 1", () => {
-    it("should be return case result", () => {
+  context("basic", () => {
+
+    it("can assign functions or value", () => {
       match<number,number>(10)
-        .whenThen(n => n > 0, v => v * v)
-        .noneThen(v => v + v)
-        .elseThen(v => v + v)
+      .caseOf(n => n > 0, v => v * v)
       .end()
       .should.be.equals(100)
-    })
-    it("should be return else result", () => {
+
+      match<number,number>(10)
+      .caseOf(10, 100)
+      .end()
+      .should.be.equals(100)
+
       match<number,number>(-5)
-        .whenThen(n => n > 0, v => v * v)
-        .elseThen(v => v + v)
+      .caseOf(n => n > 0, 100)
+      .caseOfElse(v => v + v)
       .end()
       .should.be.equals(-10)
-    })
-  })
 
-  context("case 2", () => {
-    it("should be return case result", () => {
-      match<number,number>(10)
-      .caseOf({
-        when: n => n > 0,
-        then: v => v * v,
-      })
-      .caseOfElse({
-        then: v => v + v,
-      })
-      .get()
-      .should.be.equals(100)
+      match<number,number>(undefined)
+      .caseOf(n => n > 0, v => v * v)
+      .caseOfNone(v => 404)
+      .end()
+      .should.be.equals(404)
+
+      match<number,number>(null)
+      .caseOf(n => n > 0, v => v * v)
+      .caseOfNone(404)
+      .end()
+      .should.be.equals(404)
     })
-    it("should be return else result", () => {
-      match<number,number>(-5)
+
+    it("can assign object assigned functions or value", () => {
+      match<number,number>(10)
       .caseOf({
         when: n => n > 0,
         then: v => v * v
       })
-      .caseOfElse({
-        then: v => v + v,
-      })
-      .get()
+      .end()
+      .should.be.equals(100)
+
+      match<number,number>(10)
+      .caseOf({when: 10, then: 100})
+      .end()
+      .should.be.equals(100)
+
+      match<number,number>(-5)
+      .caseOf({when: n => n > 0, then: 100})
+      .caseOfElse({then: v => v + v})
+      .end()
       .should.be.equals(-10)
+
+      match<number,number>(undefined)
+      .caseOf({when: n => n > 0, then: v => v * v})
+      .caseOfNone({then: v => 404})
+      .end()
+      .should.be.equals(404)
+
+      match<number,number>(null)
+      .caseOf({when: n => n > 0, then: v => v * v})
+      .caseOfNone({then: v => 404})
+      .end()
+      .should.be.equals(404)
     })
   })
 
-  context("case 3", () => {
-    before(() => {
-      this.result = List.of<any>(
-        0, 1, "2", 3, ()=>4, new Date(), {num:6}, 7, undefined, 8,
-        "9", 10, "Hello", 13, 12, null, "11", 14, "World", 15, 16
+  context("application", () => {
+
+    it("can arrange fizz-buzz", () => {
+      List.of<any>(
+        0, 1, "2", 3, ()=>4, {num:5}, new Date(), 7, undefined, 8,
+        "9", 10, "Hello", 11, "12", null, 13, 14, "World", 15, 16
       )
       .map<number>(
-        v => match<any, number>(v).noneThen(0)
+        v => match<number>(v)
+        .caseOfNone(0) // prevent runtime error
         .caseOf({
           when: n => typeof(n) === "number",
           then: v => v
@@ -69,31 +92,38 @@ describe("match-case", function() {
           then: v => v()
         })
         .caseOf({
-          when: n => n instanceof Date,
-          then: 5
+          when: n => !isNaN(n.num),
+          then: v => parseInt(v.num)
         })
         .caseOf({
-          when: n => n.num > 0,
-          then: v => v.num
+          when: n => n instanceof Date,
+          then: 6
         })
-        .get()
-      )
+        .end()
+       )
       .filter(n => (1 <= n&&n <= 15))
-      .sort()
       .map<string>(
-        v => match<number, string>(v)
-        .whenThen(n => n%3===0 && n%5===0, "FizzBuzz")
-        .whenThen(n => n%3===0, "Fizz")
-        .whenThen(n => n%5===0, "Buzz")
-        .elseThen(v => v.toString())
+        v => match<number,string>(v)
+        .caseOf({
+          when: n => n%3===0 && n%5===0,
+          then: "FizzBuzz"
+        })
+        .caseOf({
+          when: n => n%3===0,
+          then: "Fizz"
+        })
+        .caseOf({
+          when: n => n%5===0,
+          then: "Buzz"
+        })
+        .caseOfElse({
+          then: v => v.toString()
+        })
         .end()
       )
       .join(" ")
-    })
-    it("should be return correctly results", () => {
-      this.result.should.be.equal(
-        "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz"
-      )
+
+      .should.be.equal("1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz")
     })
   })
 })
