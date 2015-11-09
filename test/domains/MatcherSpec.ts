@@ -11,8 +11,8 @@ describe("Matcher", function() {
       when: new When<number>(n => n > 0),
       then: new Then<number,number>(v => v + 1),
     })
-    this.instance = new Matcher<number,number>(1)
-    this.newInstance = this.instance.addCase(this.inCase)
+    this.instance = new Matcher<number,number>()
+    this.caseInstance = this.instance.addCase(this.inCase)
   })
 
   describe("new", () => {
@@ -23,24 +23,20 @@ describe("Matcher", function() {
 
   describe("addCase", () => {
     it("should be return new instance", () => {
-      assert.notEqual(this.instance, this.newInstance)
+      assert.notEqual(this.instance, this.caseInstance)
     })
     it("should be increase case list size", () => {
-      assert.equal(this.instance.cases.size, this.newInstance.cases.size-1)
+      assert.equal(this.instance.cases.size, this.caseInstance.cases.size-1)
     })
   })
 
-  describe("get", () => {
+  describe("match", () => {
     before(() => {
-      this.resultCase = new Matcher<number,number>(1)
-      .addCase(this.inCase)
-      .get()
-      this.resultElse = new Matcher<number,number>(-1)
-      .addCase(this.inCase)
-      .get()
+      this.resultCase = this.caseInstance.match(10)
+      this.resultElse = this.caseInstance.match(-1)
     })
     it("should be return match case value", () => {
-      assert.equal(this.resultCase, 2)
+      assert.equal(this.resultCase, 11)
     })
     it("should be return match else value", () => {
       assert.equal(this.resultElse, undefined)

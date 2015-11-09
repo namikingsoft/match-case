@@ -67,6 +67,19 @@ describe("match-case", function() {
       .end()
       .should.be.equals(404)
     })
+
+    it("can set value after case construction", () => {
+      const matcher = match<number,number>()
+      .caseOf({
+        when: n => n > 0,
+        then: v => v * v
+      })
+      .caseOfElse({
+        then: v => v + v
+      })
+      matcher.get(10).should.be.equals(100)
+      matcher.get(-5).should.be.equals(-10)
+    })
   })
 
   context("application", () => {

@@ -5,7 +5,6 @@ import {List} from 'immutable'
 export default class Matcher<S,D> {
 
   constructor(
-    private value: S,
     private cases?: List<Case<S,D>>
   ) {
     if (this.cases === undefined) {
@@ -14,13 +13,13 @@ export default class Matcher<S,D> {
   }
 
   addCase(newCase: Case<S,D>): Matcher<S,D> {
-    return new Matcher<S,D>(this.value, this.cases.push(newCase))
+    return new Matcher<S,D>(this.cases.push(newCase))
   }
 
-  get(): D {
-    const match = this.cases.find(c => c.when.test(this.value))
+  match(value: S): D {
+    const match = this.cases.find(c => c.when.test(value))
     if (match) {
-      return match.then.exec(this.value)
+      return match.then.exec(value)
     } else {
       return undefined
     }
