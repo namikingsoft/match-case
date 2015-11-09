@@ -2,8 +2,8 @@
   "name": "match-case",
   "version": "0.0.3",
   "description": "Functional pattern matcher",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "prepublish": "npm run build",
     "dtsm": "dtsm",
