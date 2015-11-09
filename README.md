@@ -26,7 +26,6 @@ match(10)
     then: v => 404
   })
 .end()
-
 //  =>
 .should.be.equals(100)
 
@@ -34,7 +33,6 @@ match(-1)
   .caseOf(n => n > 0, v => v * v)
   .caseOfElse(404)
 .end()
-
 // =>
 .should.be.equals(404)
 
@@ -42,7 +40,6 @@ const matcher = match()
   .caseOf(n => n > 0, 200)
   .caseOfNone(404)
   .caseOfElse(500)
-
 // =>
 matcher.get(10).should.be.equals(200)
 matcher.get(-1).should.be.equals(404)
@@ -120,7 +117,29 @@ More Usage
 Please see [spec files](./test).
 
 
+Development
+------------------------------
+
+### Build
+
+```
+npm run build
+```
+
+### Test
+
+```
+npm test
+```
+
+### Test Watch
+
+```
+npm run test:watch
+```
+
+
 License
 ------------------------------
-[MIT](./LISENCE)
+[MIT](./LICENSE)
 
