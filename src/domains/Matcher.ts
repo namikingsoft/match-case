@@ -1,5 +1,5 @@
-import Case from 'domains/Case'
-import Then from 'domains/Then'
+import Case from './Case'
+import Then from './Then'
 import {List} from 'immutable'
 
 export default class Matcher<S,D> {

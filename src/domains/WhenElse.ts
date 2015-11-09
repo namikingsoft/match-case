@@ -1,4 +1,4 @@
-import When from 'domains/When'
+import When from './When'
 
 export default class WhenElse<S> extends When<S> {
 

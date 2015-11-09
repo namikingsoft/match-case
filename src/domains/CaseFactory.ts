@@ -1,6 +1,6 @@
-import Case from 'domains/Case'
-import WhenFactory, {ImplicitWhen} from 'domains/WhenFactory'
-import ThenFactory, {ImplicitThen} from 'domains/ThenFactory'
+import Case from './Case'
+import WhenFactory, {ImplicitWhen} from './WhenFactory'
+import ThenFactory, {ImplicitThen} from './ThenFactory'
 
 export default class CaseFactory {
 

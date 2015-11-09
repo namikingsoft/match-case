@@ -1,4 +1,4 @@
-import Then from 'domains/Then'
+import Then from './Then'
 
 export type ImplicitThen<S,D> = D | ((value?:S)=>D)
 

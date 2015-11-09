@@ -1,6 +1,6 @@
-import When from 'domains/When'
-import WhenNone from 'domains/WhenNone'
-import WhenElse from 'domains/WhenElse'
+import When from './When'
+import WhenNone from './WhenNone'
+import WhenElse from './WhenElse'
 
 export type ImplicitWhen<S> = S | ((value?:S)=>boolean)
 

@@ -1,0 +1,9 @@
+/.vimsessions
+/.babelrc
+/src
+/test
+/typings
+/dtsm.json
+/karma.conf.js
+/tsconfig.json
+/npm-debug.log

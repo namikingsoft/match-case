@@ -82,7 +82,7 @@ describe("match-case", function() {
     })
   })
 
-  context("application", () => {
+  context("practical", () => {
 
     it("can arrange fizz-buzz", () => {
       List.of<any>(

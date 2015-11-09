@@ -1,7 +1,7 @@
-import Matcher from 'domains/Matcher'
-import CaseFactory from 'domains/CaseFactory'
-import {ImplicitThen} from 'domains/ThenFactory'
-import {ImplicitWhen} from 'domains/WhenFactory'
+import Matcher from './domains/Matcher'
+import CaseFactory from './domains/CaseFactory'
+import {ImplicitThen} from './domains/ThenFactory'
+import {ImplicitWhen} from './domains/WhenFactory'
 
 export default function match<D>(value?: any): API<any,D>
 export default function match<S,D>(value?: S): API<S,D>
@@ -11,7 +11,7 @@ export default function match<S,D>(value?: S): API<S,D> {
   )
 }
 
-class API<S,D> {
+export class API<S,D> {
 
   constructor(
     private matcher: Matcher<S,D>,

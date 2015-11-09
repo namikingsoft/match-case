@@ -1,19 +1,34 @@
 {
   "name": "match-case",
   "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Functional pattern matcher",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
+    "prepublish": "npm run build",
     "dtsm": "dtsm",
-    "build": "webpack",
+    "clean": "rm -rf lib",
+    "compile": "tsc -p .",
+    "build": "npm run clean && npm run compile",
     "test": "karma start --reporters progress",
     "test:single": "karma start --single-run"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/namikingsoft/match-case.git"
+  },
+  "keywords": [
+    "match",
+    "matcher",
+    "case",
+    "when",
+    "then",
+    "functional"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "immutable": "^3.7.5",
-    "lodash": "^3.10.1"
+    "immutable": "^3.7.5"
   },
   "devDependencies": {
     "assert": "^1.3.0",

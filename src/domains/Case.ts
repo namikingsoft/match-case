@@ -1,5 +1,5 @@
-import When from 'domains/When'
-import Then from 'domains/Then'
+import When from './When'
+import Then from './Then'
 
 export default class Case<S,D> {
 
