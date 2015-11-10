@@ -9,7 +9,7 @@ describe("match-case", function() {
     it("can assign functions or value", () => {
       const result1 = match<number,number>(10)
       .caseOf(n => n > 0, v => v * v)
-      .end()
+      .get()
       assert(result1 === 100)
 
       const result2 = match<number,number>(10)

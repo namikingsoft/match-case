@@ -39,7 +39,7 @@ var result2 = match(-1)
   .caseOfElse({
     then: v => 404
   })
-.end()
+.get()
 
 assert(result2 === 404)
 

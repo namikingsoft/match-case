@@ -68,7 +68,7 @@ export default class API<S,D> {
     return this.matcher.match(this.value)
   }
 
-  get(value: S): D {
+  get(value: S = this.value): D {
     return this.matcher.match(value)
   }
 }
