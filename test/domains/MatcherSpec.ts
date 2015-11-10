@@ -1,9 +1,9 @@
-import assert from 'power-assert'
 import Matcher from 'domains/Matcher'
 import Case from 'domains/Case'
 import When from 'domains/When'
 import Then from 'domains/Then'
 import {List} from 'immutable'
+import * as assert from 'power-assert'
 
 describe("Matcher", function() {
 

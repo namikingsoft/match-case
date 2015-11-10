@@ -1,6 +1,6 @@
-import assert from 'power-assert'
 import match from 'index'
 import {List} from 'immutable'
+import * as assert from 'power-assert'
 
 describe("match-case", function() {
 

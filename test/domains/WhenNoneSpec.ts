@@ -1,5 +1,5 @@
-import assert from 'power-assert'
 import WhenNone from 'domains/WhenNone'
+import * as assert from 'power-assert'
 
 describe("WhenNone", function() {
 

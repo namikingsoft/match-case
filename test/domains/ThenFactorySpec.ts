@@ -1,6 +1,6 @@
-import assert from 'power-assert'
 import ThenFactory from 'domains/ThenFactory'
 import Then from 'domains/Then'
+import * as assert from 'power-assert'
 
 describe("ThenFactory", function() {
 

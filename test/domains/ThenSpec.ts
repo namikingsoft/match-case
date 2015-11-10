@@ -1,5 +1,5 @@
-import assert from 'power-assert'
 import Then from 'domains/Then'
+import * as assert from 'power-assert'
 
 describe("Then", function() {
 

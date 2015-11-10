@@ -1,8 +1,8 @@
-import assert from 'power-assert'
 import WhenFactory from 'domains/WhenFactory'
 import WhenElse from 'domains/WhenElse'
 import WhenNone from 'domains/WhenNone'
 import When from 'domains/When'
+import * as assert from 'power-assert'
 
 describe("WhenFactory", function() {
 

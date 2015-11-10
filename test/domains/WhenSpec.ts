@@ -1,5 +1,5 @@
-import assert from 'power-assert'
 import When from 'domains/When'
+import * as assert from 'power-assert'
 
 describe("When", function() {
 
