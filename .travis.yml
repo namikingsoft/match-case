@@ -3,3 +3,4 @@ node_js:
   - 0.12
 env:
   - NODE_ENV=test
+after_success: 'cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js'

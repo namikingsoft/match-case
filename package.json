@@ -8,10 +8,11 @@
     "clean": "rm -rf lib",
     "compile": "tsc -p . --outDir lib",
     "build": "npm run clean && npm run compile",
-    "test": "NODE_PATH=src mocha test/**/*.ts",
-    "test:watch": "npm test -- --watch --reporter min",
+    "test": "test/all.sh",
+    "test:lite": "NODE_PATH=src mocha test/**/*.ts",
+    "test:watch": "npm run test:lite -- --watch --reporter min",
     "postinstall": "if [ \"$NODE_ENV\" != production ]; then dtsm install; fi",
-    "prepublish": "if [ \"$NODE_ENV\" != test ]; then npm run build && npm test; fi"
+    "prepublish": "if [ \"$NODE_ENV\" != test ]; then npm test; fi"
   },
   "repository": {
     "type": "git",
@@ -33,10 +34,13 @@
   },
   "devDependencies": {
     "assert": "^1.3.0",
+    "coveralls": "^2.11.4",
     "dtsm": "^0.12.0",
     "espower-typescript": "^3.0.0",
+    "istanbul": "^0.4.0",
     "mocha": "^2.3.3",
     "power-assert": "^1.1.0",
+    "remap-istanbul": "^0.4.0",
     "typescript": "^1.7.0-dev.20151006"
   }
 }

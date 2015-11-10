@@ -3,6 +3,7 @@
 /src
 /test
 /typings
+/coverage
 /dtsm.json
 /karma.conf.js
 /tsconfig.json
