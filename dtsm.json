@@ -15,15 +15,6 @@
   "dependencies": {
     "lodash/lodash.d.ts": {
       "ref": "421d6610bdb09e1015b71f5991d7a68d079eca21"
-    },
-    "mocha/mocha.d.ts": {
-      "ref": "421d6610bdb09e1015b71f5991d7a68d079eca21"
-    },
-    "chai/chai.d.ts": {
-      "ref": "421d6610bdb09e1015b71f5991d7a68d079eca21"
-    },
-    "assert/assert.d.ts": {
-      "ref": "421d6610bdb09e1015b71f5991d7a68d079eca21"
     }
   }
 }

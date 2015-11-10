@@ -8,7 +8,6 @@
   },
   "files": [
     "typings/bundle.d.ts",
-    "node_modules/immutable/dist/immutable.d.ts",
     "src/index.ts"
   ]
 }
