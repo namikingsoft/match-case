@@ -1,6 +1,10 @@
 Functional matcher for JavaScript
 ==============================
+[![npm version](https://badge.fury.io/js/match-case.svg)](https://badge.fury.io/js/match-case)
+[![Build Status](https://travis-ci.org/namikingsoft/match-case.svg?branch=master)](https://travis-ci.org/namikingsoft/match-case)
+
 Match-case is npm package that add functional pattern matcher.
+
 
 
 Install
