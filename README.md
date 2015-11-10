@@ -1,6 +1,7 @@
-Functional matcher for JavaScript
+Functional Matcher for JavaScript
 ==============================
 [![npm version](https://badge.fury.io/js/match-case.svg)](https://badge.fury.io/js/match-case)
+[![Dependency Status](https://david-dm.org/namikingsoft/match-case.svg)](https://david-dm.org/namikingsoft/match-case)
 [![Build Status](https://travis-ci.org/namikingsoft/match-case.svg?branch=master)](https://travis-ci.org/namikingsoft/match-case)
 
 Match-case is npm package that add functional pattern matcher.
@@ -23,6 +24,13 @@ In case of ECMAScript6
 import match from 'match-case'
 
 var result1 = match(10)
+  .caseOf(n => n > 0, v => v * v)
+  .caseOfElse(404)
+.end()
+
+assert(result1 === 100)
+
+var result2 = match(-1)
   .caseOf({
     when: n => n > 0,
     then: v => v * v
@@ -31,21 +39,14 @@ var result1 = match(10)
     then: v => 404
   })
 .end()
-// =>
-assert(result1 === 100)
 
-var result2 = match(-1)
-  .caseOf(n => n > 0, v => v * v)
-  .caseOfElse(404)
-.end()
-// =>
 assert(result2 === 404)
 
 const matcher = match()
   .caseOf(n => n > 0, 200)
   .caseOfNone(404)
   .caseOfElse(500)
-// =>
+
 assert(matcher.get(10) === 200)
 assert(matcher.get(-1) === 404)
 assert(matcher.get(null) === 500)
@@ -64,7 +65,7 @@ var result = match(10)
   })
   .caseOfElse(404)
 .end()
-// =>
+
 assert(result === 100)
 ```
 
@@ -129,7 +130,6 @@ const result = List.of<any>(
 )
 .join(" ")
 
-// =>
 assert(
   result === "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz"
 )
