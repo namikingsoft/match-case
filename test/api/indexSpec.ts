@@ -81,6 +81,16 @@ describe("match-case", function() {
       assert(matcher.get(10) === 100)
       assert(matcher.get(-5) === -10)
     })
+
+    it("should be return undefined if unmatch without caseOfElse", () => {
+      const result = match<number,number>(-1)
+      .caseOf({
+        when: n => n > 0,
+        then: v => v * v
+      })
+      .end()
+      assert(result === undefined)
+    })
   })
 
   context("practical", () => {
