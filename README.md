@@ -3,6 +3,7 @@ Functional Matcher for JavaScript
 [![npm version](https://badge.fury.io/js/match-case.svg)](https://badge.fury.io/js/match-case)
 [![Dependency Status](https://david-dm.org/namikingsoft/match-case.svg)](https://david-dm.org/namikingsoft/match-case)
 [![Build Status](https://travis-ci.org/namikingsoft/match-case.svg?branch=master)](https://travis-ci.org/namikingsoft/match-case)
+[![Coverage Status](https://coveralls.io/repos/namikingsoft/match-case/badge.svg?branch=master&service=github)](https://coveralls.io/github/namikingsoft/match-case?branch=master)
 
 Match-case is npm package that add functional pattern matcher.
 
