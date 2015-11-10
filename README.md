@@ -56,7 +56,7 @@ var match = require('match-case').default
 var result = match(10)
   .caseOf({
     when: function(n) {return n > 0},
-    then: function(v) {return v * v})
+    then: function(v) {return v * v}
   })
   .caseOfElse(404)
 .end()
