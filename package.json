@@ -5,13 +5,13 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "typings": "dtsm install",
     "clean": "rm -rf lib",
     "compile": "tsc -p . --outDir lib",
     "build": "npm run clean && npm run compile",
     "test": "NODE_PATH=src mocha test/**/*.ts",
     "test:watch": "npm test -- --watch --reporter min",
-    "prepublish": "npm test && npm run build"
+    "postinstall": "if [ \"$NODE_ENV\" != production ]; then dtsm install; fi",
+    "prepublish": "if [ \"$NODE_ENV\" != test ]; then npm run build && npm test; fi"
   },
   "repository": {
     "type": "git",

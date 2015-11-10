@@ -144,7 +144,6 @@ Development
 
 ```
 npm install
-npm run typings
 ```
 
 #### Build
