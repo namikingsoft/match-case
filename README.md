@@ -1,6 +1,6 @@
-Match-case
+Functional matcher for JavaScript
 ==============================
-Functional pattern matcher for JavaScript.
+Match-case is npm package that add functional pattern matcher.
 
 
 Install
@@ -134,7 +134,7 @@ assert(
 
 More Usage
 ------------------------------
-Please see [spec files](./test/api).
+Please see [API spec files](./test/api).
 
 
 Development
