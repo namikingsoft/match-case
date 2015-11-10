@@ -5,12 +5,12 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
+    "typings": "dtsm install",
     "clean": "rm -rf lib",
     "compile": "tsc -p . --outDir lib",
     "build": "npm run clean && npm run compile",
     "test": "NODE_PATH=src mocha test/**/*.ts",
     "test:watch": "npm test -- --watch --reporter min",
-    "postinstall": "dtsm install",
     "prepublish": "npm test && npm run build"
   },
   "repository": {

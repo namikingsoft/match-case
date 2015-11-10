@@ -140,10 +140,11 @@ Please see [API spec files](./test/api).
 Development
 ------------------------------
 
-#### Install
+#### Get ready
 
 ```
 npm install
+npm run typings
 ```
 
 #### Build
