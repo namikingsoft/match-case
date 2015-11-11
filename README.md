@@ -48,11 +48,11 @@ import match from 'match-case'
 const result3 = match(2).
   caseOf(1, 10).
   caseOf(2, 20).
-  caseOf(3, 20).
+  caseOf(2, 30).
   caseOfElse(404).
 end()
 
-assert(result3 === 100)
+assert(result3 === 20)
 
 const matcher = match().
   caseOf(n => n > 0, 200).
