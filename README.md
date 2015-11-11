@@ -24,13 +24,16 @@ In case of ECMAScript6
 ```javascript
 import match from 'match-case'
 
+// two function args
 const result1 = match(10).
   caseOf(n => n > 0, v => v * v).
+  caseOf(n => n < 0, v => v + v).
   caseOfElse(404).
 end()
 
 assert(result1 === 100)
 
+// one object arg with function
 const result2 = match(-1).
   caseOf({
     when: n => n > 0,
@@ -43,17 +46,17 @@ get()
 
 assert(result2 === 404)
 
-import match from 'match-case'
-
+// equal value
 const result3 = match(2).
   caseOf(1, 10).
   caseOf(2, 20).
-  caseOf(2, 30).
+  caseOf(n => n > 0, 30).
   caseOfElse(404).
 end()
 
-assert(result3 === 20)
+assert(result3 === 20) // first match case
 
+// match after case construction
 const matcher = match().
   caseOf(n => n > 0, 200).
   caseOfNone(404).
