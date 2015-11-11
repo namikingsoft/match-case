@@ -43,6 +43,17 @@ get()
 
 assert(result2 === 404)
 
+import match from 'match-case'
+
+const result3 = match(2).
+  caseOf(1, 10).
+  caseOf(2, 20).
+  caseOf(3, 20).
+  caseOfElse(404).
+end()
+
+assert(result3 === 100)
+
 const matcher = match().
   caseOf(n => n > 0, 200).
   caseOfNone(404).

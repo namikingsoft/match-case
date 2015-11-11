@@ -82,6 +82,15 @@ describe("match-case", function() {
       assert(matcher.get(-5) === -10)
     })
 
+    it("should be return first match case value", () => {
+      const result = match<number,number>(1).
+        caseOf(1, 2).
+        caseOf(1, 3).
+        caseOfElse(4).
+      end()
+      assert(result === 2)
+    })
+
     it("should be return undefined if unmatch without caseOfElse", () => {
       const result = match<number,number>(-1).
       caseOf({
