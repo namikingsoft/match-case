@@ -2,6 +2,7 @@
 
 rm -rf coverage
 
+dtsm install
 npm run build
 
 NODE_PATH=lib \

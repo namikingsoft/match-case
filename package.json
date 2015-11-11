@@ -11,7 +11,6 @@
     "test": "test/all.sh",
     "test:lite": "NODE_PATH=src mocha test/**/*.ts",
     "test:watch": "npm run test:lite -- --watch --reporter min",
-    "postinstall": "if [ \"$NODE_ENV\" != production ]; then dtsm install; fi",
     "prepublish": "if [ \"$NODE_ENV\" != test ]; then npm test; fi"
   },
   "repository": {
