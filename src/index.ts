@@ -1,7 +1,7 @@
-import API from './domains/API'
+import MatchAPI from './api/MatchAPI'
 
-export default function match<D>(value?: any): API<any,D>;
-export default function match<S,D>(value?: S): API<S,D>;
-export default function match<S,D>(value?: S): API<S,D> {
-  return new API<S,D>(value)
+export default function match<D>(value?: any): MatchAPI<any,D>;
+export default function match<S,D>(value?: S): MatchAPI<S,D>;
+export default function match<S,D>(value?: S): MatchAPI<S,D> {
+  return new MatchAPI<S,D>(value)
 }

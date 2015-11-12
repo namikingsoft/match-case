@@ -1,9 +1,9 @@
-import Matcher from './Matcher'
-import CaseFactory from './CaseFactory'
-import {ImplicitThen} from './ThenFactory'
-import {ImplicitWhen} from './WhenFactory'
+import Matcher from '../domains/Matcher'
+import CaseFactory from '../domains/CaseFactory'
+import {ImplicitThen} from '../domains/ThenFactory'
+import {ImplicitWhen} from '../domains/WhenFactory'
 
-export default class API<S,D> {
+export default class MatchAPI<S,D> {
 
   constructor(
     private value?: S,
@@ -17,13 +17,13 @@ export default class API<S,D> {
   caseOf(
     when: ImplicitWhen<S>,
     then: ImplicitThen<S,D>
-  ): API<S,D>
+  ): MatchAPI<S,D>
   caseOf(param: {
     when: ImplicitWhen<S>,
     then: ImplicitThen<S,D>
-  }): API<S,D>
-  caseOf(...args): API<S,D> {
-    return new API<S,D>(
+  }): MatchAPI<S,D>
+  caseOf(...args): MatchAPI<S,D> {
+    return new MatchAPI<S,D>(
       this.value,
       this.matcher.addCase((v => v.length === 1 ?
         CaseFactory.create<S,D>(args[0]) :
@@ -34,12 +34,12 @@ export default class API<S,D> {
 
   caseOfNone(
     then: ImplicitThen<S,D>
-  ): API<S,D>
+  ): MatchAPI<S,D>
   caseOfNone(param: {
     then: ImplicitThen<S,D>
-  }): API<S,D>
-  caseOfNone(...args): API<S,D> {
-    return new API<S,D>(
+  }): MatchAPI<S,D>
+  caseOfNone(...args): MatchAPI<S,D> {
+    return new MatchAPI<S,D>(
       this.value,
       this.matcher.addCase((v => v[0].then ?
         CaseFactory.createNone<S,D>(args[0]) :
@@ -50,12 +50,12 @@ export default class API<S,D> {
 
   caseOfElse(
     then: ImplicitThen<S,D>
-  ): API<S,D>
+  ): MatchAPI<S,D>
   caseOfElse(param: {
     then: ImplicitThen<S,D>
-  }): API<S,D>
-  caseOfElse(...args): API<S,D> {
-    return new API<S,D>(
+  }): MatchAPI<S,D>
+  caseOfElse(...args): MatchAPI<S,D> {
+    return new MatchAPI<S,D>(
       this.value,
       this.matcher.addCase((v => v[0].then ?
         CaseFactory.createElse<S,D>(args[0]) :
